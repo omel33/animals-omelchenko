@@ -24,7 +24,7 @@ public class Island {
         for (int i=0; i < width; i++) {
             for (int j=0; j < height; j++) {
                 locations[i][j].update();
-            }
+            }вв
         }
     }
 
