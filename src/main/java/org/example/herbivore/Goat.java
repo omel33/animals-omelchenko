@@ -1,12 +1,18 @@
 package org.example.herbivore;
 
+import location.Location;
+
 public class Goat extends Herbivore{
     public Goat (){
         super(60,140,3,10);
     }
     @Override
-    public void eat() {
-        System.out.println("Goat is eat");
+    public void eat(Location location) {
+        if(location.getPlants().getQuantity()>0){
+            location.getPlants().setQuantity(location.getPlants().getQuantity()-10);
+            System.out.println("Goat is plants");
+        }
+
     }
 
     @Override

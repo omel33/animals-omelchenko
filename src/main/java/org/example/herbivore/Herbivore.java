@@ -1,21 +1,33 @@
 package org.example.herbivore;
 
+import location.Location;
 import org.example.Animal;
 
-public class Herbivore extends Animal {
-    public Herbivore(double weight, int maxCount, int speed, double foodNeed){
-        super(weight,maxCount,speed,foodNeed);
+import java.util.concurrent.ThreadLocalRandom;
+
+public abstract class Herbivore extends Animal {
+    public Herbivore(double weight, int maxCount, int speed, double foodNeed) {
+        super(weight, maxCount, speed, foodNeed);
     }
+
     @Override
-    public void eat(){
+    public void eat() {
 
     }
+
+    public abstract void eat(Location location);
+
     @Override
-    public void move(){
+    public void move() {
 
     }
-    @Override
-    public void reproduce(){
 
+    @Override
+    public void reproduce() {
+
+    }
+
+    protected boolean tryToEat(Animal prey, double probability) {
+        return ThreadLocalRandom.current().nextDouble() < probability;
     }
 }
