@@ -1,5 +1,6 @@
 package org.example.herbivore;
 
+import location.Island;
 import location.Location;
 import org.example.Animal;
 
@@ -10,10 +11,6 @@ public abstract class Herbivore extends Animal {
         super(weight, maxCount, speed, foodNeed);
     }
 
-    @Override
-    public void eat() {
-
-    }
 
     public abstract void eat(Location location);
 
@@ -21,6 +18,7 @@ public abstract class Herbivore extends Animal {
     public void move() {
 
     }
+
 
     @Override
     public void reproduce() {

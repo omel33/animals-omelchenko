@@ -1,5 +1,6 @@
 package org.example.herbivore;
 
+import location.Island;
 import location.Location;
 
 public class Caterpillar extends Herbivore{
@@ -16,7 +17,8 @@ public class Caterpillar extends Herbivore{
     }
 
     @Override
-    public void move() {
+    public void move(Island island, int currentX, int currentY) {
+        moveRandomly(island,currentX,currentY);
         System.out.println("Caterpillar is move");
 
     }
