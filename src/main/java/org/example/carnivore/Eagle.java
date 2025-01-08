@@ -1,5 +1,6 @@
 package org.example.carnivore;
 
+import location.Island;
 import location.Location;
 import org.example.herbivore.*;
 
@@ -24,7 +25,8 @@ public class Eagle extends Carnivore{
     }
 
     @Override
-    public void move() {
+    public void move(Island island, int currentX, int currentY) {
+        moveRandomly(island,currentX,currentY);
         System.out.println("Eagle is move");
 
     }
