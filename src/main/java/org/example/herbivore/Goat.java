@@ -2,6 +2,7 @@ package org.example.herbivore;
 
 import location.Island;
 import location.Location;
+import org.example.carnivore.Bear;
 
 public class Goat extends Herbivore{
     public Goat (){
@@ -24,8 +25,12 @@ public class Goat extends Herbivore{
     }
 
     @Override
-    public void reproduce() {
-        System.out.println("Goat is reproduce");
+    public void reproduce(Location location) {
+        if (canReproduce(location)) {
+            location.addAnimal(new Goat());
+            System.out.println("Goat is reproduce");
+        }
+
 
     }
 }

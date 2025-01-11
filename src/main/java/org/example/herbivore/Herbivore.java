@@ -15,13 +15,13 @@ public abstract class Herbivore extends Animal {
     public abstract void eat(Location location);
 
     @Override
-    public void move() {
+    public void move(Island island, int currentX, int currentY) {
 
     }
 
 
     @Override
-    public void reproduce() {
+    public void reproduce(Location location) {
 
     }
 

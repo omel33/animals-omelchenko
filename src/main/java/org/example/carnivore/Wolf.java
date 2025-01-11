@@ -40,8 +40,12 @@ public class Wolf extends Carnivore {
     }
 
     @Override
-    public void reproduce() {
-        System.out.println("Wolf is reproduce");
+    public void reproduce(Location location) {
+        if (canReproduce(location)) {
+            location.addAnimal(new Wolf());
+            System.out.println("Wolf is reproduce");
+        }
+
 
     }
 }

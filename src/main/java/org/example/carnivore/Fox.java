@@ -31,8 +31,12 @@ public class Fox extends Carnivore{
     }
 
     @Override
-    public void reproduce() {
-        System.out.println("Fox is reproduce");
+    public void reproduce(Location location) {
+        if (canReproduce(location)) {
+            location.addAnimal(new Fox());
+            System.out.println("Fox is reproduce");
+        }
+
 
     }
 }
