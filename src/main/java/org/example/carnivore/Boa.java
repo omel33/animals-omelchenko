@@ -33,8 +33,12 @@ public class Boa extends Carnivore {
     }
 
     @Override
-    public void reproduce() {
-        System.out.println("Boa is reproduce");
+    public void reproduce(Location location) {
+        if (canReproduce(location)) {
+            location.addAnimal(new Boa());
+            System.out.println("Boa is reproduce");
+        }
+
 
     }
 }

@@ -4,11 +4,12 @@ import location.Island;
 import location.Location;
 import org.example.herbivore.*;
 
-public class Bear extends Carnivore{
-    public Bear(){
-        super(500,5,2,80);
+public class Bear extends Carnivore {
+    public Bear() {
+        super(500, 5, 2, 80);
 
     }
+
     @Override
     public void eat(Location location) {
         location.getAnimals().stream()
@@ -20,7 +21,7 @@ public class Bear extends Carnivore{
                         (animal instanceof Duck && tryToEat(animal, 0.1)) ||
                         (animal instanceof Goat && tryToEat(animal, 0.7)) ||
                         (animal instanceof Horse && tryToEat(animal, 0.4)) ||
-                        (animal instanceof Sheep && tryToEat(animal, 0.7))||
+                        (animal instanceof Sheep && tryToEat(animal, 0.7)) ||
                         animal instanceof Boa && tryToEat(animal, 0.8))
                 .findFirst()
                 .ifPresent(animal -> {
@@ -33,14 +34,18 @@ public class Bear extends Carnivore{
 
     @Override
     public void move(Island island, int currentX, int currentY) {
-        moveRandomly(island,currentX,currentY);
+        moveRandomly(island, currentX, currentY);
         System.out.println("Bear is move");
 
     }
 
     @Override
-    public void reproduce() {
-        System.out.println("Bear is reproduce");
+    public void reproduce(Location location) {
+        if (canReproduce(location)) {
+            location.addAnimal(new Bear());
+            System.out.println("Bear is reproduce");
+        }
+
 
     }
 }

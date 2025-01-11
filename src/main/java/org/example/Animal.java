@@ -28,4 +28,10 @@ public abstract class Animal implements Action {
             }
         }
     }
+    protected boolean canReproduce(Location location){
+        long count=location.getAnimals().stream()
+                .filter(animal -> animal.getClass().equals(this.getClass())).
+                count();
+        return count>1&&location.getAnimals().size()<maxCount;
+    }
 }
