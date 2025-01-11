@@ -2,9 +2,10 @@ package org.example.herbivore;
 
 import location.Island;
 import location.Location;
+import org.example.DefaultAction;
 import org.example.carnivore.Bear;
 
-public class Mouse extends Herbivore{
+public class Mouse extends Herbivore implements DefaultAction {
     public Mouse(){
         super(0.05,500,1,0.01);
     }
@@ -24,20 +25,4 @@ public class Mouse extends Herbivore{
 
     }
 
-    @Override
-    public void move(Island island, int currentX, int currentY) {
-        moveRandomly(island,currentX,currentY);
-        System.out.println("Mouse is move");
-
-    }
-
-    @Override
-    public void reproduce(Location location) {
-        if (canReproduce(location)) {
-            location.addAnimal(new Mouse());
-            System.out.println("Mouse is reproduce");
-        }
-
-
-    }
 }
