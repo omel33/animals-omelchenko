@@ -3,9 +3,10 @@ package org.example.carnivore;
 import location.Island;
 import location.Location;
 import org.example.Animal;
+import org.example.DefaultAction;
 import org.example.herbivore.*;
 
-public class Wolf extends Carnivore {
+public class Wolf extends Carnivore implements DefaultAction {
     public Wolf() {
         super(50, 30, 3, 8);
     }
@@ -31,21 +32,5 @@ public class Wolf extends Carnivore {
 
     }
 
-    @Override
-    public void move(Island island, int currentX,int currentY) {
-        moveRandomly(island,currentX,currentY);
 
-        System.out.println("Wolf is move");
-
-    }
-
-    @Override
-    public void reproduce(Location location) {
-        if (canReproduce(location)) {
-            location.addAnimal(new Wolf());
-            System.out.println("Wolf is reproduce");
-        }
-
-
-    }
 }
