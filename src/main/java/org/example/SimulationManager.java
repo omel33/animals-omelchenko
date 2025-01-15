@@ -1,24 +1,77 @@
 package org.example;
 
 import location.Island;
+import location.Location;
+import org.example.carnivore.*;
+import org.example.herbivore.*;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class SimulationManager {
     private Island island;
+    private Config config;
     private ScheduledExecutorService scheduler;
-    public SimulationManager(int width, int heigth){
-        island=new Island(width,heigth);
-        scheduler= Executors.newScheduledThreadPool(1);
+    private ExecutorService animalExecutor;
+
+    public SimulationManager(Config config) {
+        this.config = config;
+        this.island = new Island(config.getIslandWidth(), config.getIslandHeight());
+        scheduler = Executors.newScheduledThreadPool(1);
+        animalExecutor = Executors.newFixedThreadPool(10); // Наприклад, 10 потоків для тварин
+        initializeAnimals();
     }
-    public void start(){
-        scheduler.scheduleAtFixedRate(this::runSimulation,0,1, TimeUnit.SECONDS);
+
+    private void initializeAnimals() {
+        addAnimals(config.getInitialWolfCount(), () -> new Wolf());
+        addAnimals(config.getInitialFoxCount(), () -> new Fox());
+        addAnimals(config.getInitialBearCount(), () -> new Bear());
+        addAnimals(config.getInitialBoaCount(), () -> new Boa());
+        addAnimals(config.getInitialEagleCount(), () -> new Eagle());
+        addAnimals(config.getInitialRabbitCount(), () -> new Rabbit());
+        addAnimals(config.getInitialMouseCount(), () -> new Mouse());
+        addAnimals(config.getInitialBoarCount(), () -> new Boar());
+        addAnimals(config.getInitialDeerCount(), () -> new Deer());
+        addAnimals(config.getInitialHorseCount(), () -> new Horse());
+        addAnimals(config.getInitialGoatCount(), () -> new Goat());
+        addAnimals(config.getInitialSheepCount(), () -> new Sheep());
+        addAnimals(config.getInitialBuffaloCount(), () -> new Buffalo());
+        addAnimals(config.getInitialDuckCount(), () -> new Duck());
+        addAnimals(config.getInitialCaterpillarCount(), () -> new Caterpillar());
     }
-    private void runSimulation(){
+
+    private void addAnimals(int count, AnimalCreator creator) {
+        for (int i = 0; i < count; i++) {
+            int x = (int) (Math.random() * config.getIslandWidth());
+            int y = (int) (Math.random() * config.getIslandHeight());
+            island.getLocation(x, y).addAnimal(creator.create());
+        }
+    }
+
+    public void start() {
+        scheduler.scheduleAtFixedRate(this::runSimulation, 0, config.getSimulationStepDuration(), TimeUnit.MILLISECONDS);
+    }
+
+    public void stop() {
+        scheduler.shutdown();
+        animalExecutor.shutdown();
+    }
+
+    private void runSimulation() {
         island.update();
+        for (int i = 0; i < island.getWidth(); i++) {
+            for (int j = 0; j < island.getHeight(); j++) {
+                Location location = island.getLocation(i, j);
+                for (Animal animal : location.getAnimals()) {
+                    int finalI = i;
+                    animalExecutor.submit(() -> {
+                        animal.eat(location);
+                        animal.move(island, finalI, j);
+                        animal.reproduce(location);
+                    });
+                }
+            }
+        }
+
         System.out.println("Simulation step completed.");
     }
 }
