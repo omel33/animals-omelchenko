@@ -3,7 +3,7 @@ package org.example;
 import location.Island;
 import location.Location;
 
-public abstract class Animal  {
+public abstract class Animal implements DefaultAction {
     protected double weight;
     protected int maxCount;
     protected int speed;
@@ -15,5 +15,21 @@ public abstract class Animal  {
         this.maxCount = maxCount;
         this.speed = speed;
         this.foodNeed = foodNeed;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public int getMaxCount() {
+        return maxCount;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public double getFoodNeed() {
+        return foodNeed;
     }
 }

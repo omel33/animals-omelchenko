@@ -5,7 +5,7 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
         Config config = new Config(
-                10, // Ширина острова
+                100, // Ширина острова
                 20, // Висота острова
                 5,  // Початкова кількість вовків
                 5,  // Початкова кількість лисиць

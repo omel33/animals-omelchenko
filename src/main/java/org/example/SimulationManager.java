@@ -43,7 +43,10 @@ public class SimulationManager {
         for (int i = 0; i < count; i++) {
             int x = (int) (Math.random() * config.getIslandWidth());
             int y = (int) (Math.random() * config.getIslandHeight());
-            island.getLocation(x, y).addAnimal(creator.create());
+            Location location = island.getLocation(x, y);
+            if (location != null) {
+                location.addAnimal(creator.create());
+            }
         }
     }
 
@@ -63,10 +66,11 @@ public class SimulationManager {
                 Location location = island.getLocation(i, j);
                 for (Animal animal : location.getAnimals()) {
                     int finalI = i;
+                    int finalJ = j;
                     animalExecutor.submit(() -> {
                         animal.eat(location);
-                        animal.move(island, finalI, j);
-                        animal.reproduce(location);
+                        animal.move(island, animal, finalI, finalJ, animal.getMaxCount());
+                        animal.reproduce(location, animal, animal.getMaxCount());
                     });
                 }
             }
