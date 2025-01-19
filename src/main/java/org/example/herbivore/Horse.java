@@ -13,8 +13,9 @@ public class Horse extends Herbivore implements DefaultAction {
     public void eat(Location location) {
         if(location.getPlants().getQuantity()>0){
             location.getPlants().setQuantity(location.getPlants().getQuantity()-60);
-            System.out.println("Horse is plants");
+            logger.logMessage("Horse eat is plants");
         }
+
 
     }
 

@@ -8,6 +8,7 @@ import org.example.herbivore.*;
 import java.util.concurrent.*;
 
 public class SimulationManager {
+    private Logger logger = Logger.getInstance();
     private Island island;
     private Config config;
     private ScheduledExecutorService scheduler;
@@ -76,6 +77,6 @@ public class SimulationManager {
             }
         }
 
-        System.out.println("Simulation step completed.");
+        logger.logMessage("Simulation step completed.");
     }
 }

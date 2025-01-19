@@ -16,11 +16,11 @@ public class Mouse extends Herbivore implements DefaultAction {
                 ).findFirst()
                 .ifPresent(animal -> {
                     location.removeAnimal(animal);
-                    System.out.println("Mouse is eat caterpillar");
+                    logger.logMessage("Mouse is eat caterpillar");
                 });
         if(location.getPlants().getQuantity()>0){
             location.getPlants().setQuantity(location.getPlants().getQuantity()-1);
-            System.out.println("Boar is plants");
+            logger.logMessage("Boar eat is plants");
         }
 
     }

@@ -13,7 +13,7 @@ public class Caterpillar extends Herbivore implements DefaultAction {
     public void eat(Location location) {
         if(location.getPlants().getQuantity()>0){
             location.getPlants().setQuantity(location.getPlants().getQuantity()-1);
-            System.out.println("Caterpillar is plants");
+            logger.logMessage("Caterpillar eat is plants");
         }
 
     }

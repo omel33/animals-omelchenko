@@ -13,7 +13,7 @@ public class Rabbit extends Herbivore implements DefaultAction {
     public void eat(Location location) {
         if(location.getPlants().getQuantity()>0){
             location.getPlants().setQuantity(location.getPlants().getQuantity()-1);
-            System.out.println("Rabbit is plants");
+            logger.logMessage("Rabbit eat is plants");
         }
 
     }

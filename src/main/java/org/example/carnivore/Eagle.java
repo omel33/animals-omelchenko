@@ -19,7 +19,7 @@ public class Eagle extends Carnivore implements DefaultAction {
                 .findFirst()
                 .ifPresent(animal -> {
                     location.removeAnimal(animal);
-                    System.out.println("Wolf ate a " + animal.getClass()
+                    logger.logMessage("Wolf ate a " + animal.getClass()
                             .getSimpleName().toLowerCase() + ".");
                 });
 

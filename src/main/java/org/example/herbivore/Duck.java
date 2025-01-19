@@ -17,11 +17,11 @@ public class Duck extends Herbivore implements DefaultAction {
                 ).findFirst()
                 .ifPresent(animal -> {
                     location.removeAnimal(animal);
-                    System.out.println("Duck is eat caterpillar");
+                    logger.logMessage("Duck is eat caterpillar");
                 });
         if (location.getPlants().getQuantity() > 0) {
             location.getPlants().setQuantity(location.getPlants().getQuantity() - 1);
-            System.out.println("Duck is plants");
+            logger.logMessage("Duck eat is plants");
         }
 
     }

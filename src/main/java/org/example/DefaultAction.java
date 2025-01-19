@@ -4,6 +4,7 @@ import location.Island;
 import location.Location;
 
 public interface DefaultAction extends Action {
+     Logger dLogger = Logger.getInstance();
 
 
 
@@ -29,7 +30,7 @@ public interface DefaultAction extends Action {
             if (newLocation.getAnimals().size() < maxMoveCount) {
                 island.getLocation(currentX, currentY).removeAnimal(animal);
                 newLocation.addAnimal(animal);
-                System.out.println(animal.getClass().getSimpleName() + "Move to new location");
+                dLogger.logMessage(animal.getClass().getSimpleName() + " move to new location");
             }
         }
     }

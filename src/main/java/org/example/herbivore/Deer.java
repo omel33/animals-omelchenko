@@ -13,7 +13,7 @@ public class Deer extends Herbivore implements DefaultAction {
     public void eat(Location location) {
         if(location.getPlants().getQuantity()>0){
             location.getPlants().setQuantity(location.getPlants().getQuantity()-50);
-            System.out.println("Deer is plants");
+            logger.logMessage("Deer eat is plants");
         }
 
     }

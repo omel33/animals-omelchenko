@@ -13,7 +13,7 @@ public class Sheep extends Herbivore implements DefaultAction {
     public void eat(Location location) {
         if(location.getPlants().getQuantity()>0){
             location.getPlants().setQuantity(location.getPlants().getQuantity()-15);
-            System.out.println("Sheep is plants");
+            logger.logMessage("Sheep eat is plants");
         }
 
     }

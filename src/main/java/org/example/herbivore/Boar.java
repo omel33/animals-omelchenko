@@ -18,11 +18,11 @@ public class Boar extends Herbivore implements DefaultAction {
                 ).findFirst()
                 .ifPresent(animal -> {
                     location.removeAnimal(animal);
-                    System.out.println("Boar is eat mouse");
+                    logger.logMessage("Boar is eat mouse");
                 });
         if(location.getPlants().getQuantity()>0){
             location.getPlants().setQuantity(location.getPlants().getQuantity()-50);
-            System.out.println("Boar is plants");
+            logger.logMessage("Boar eat is plants");
         }
 
     }

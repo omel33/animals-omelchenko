@@ -14,7 +14,7 @@ public class Buffalo extends Herbivore implements DefaultAction {
     public void eat(Location location) {
         if (location.getPlants().getQuantity() > 0) {
             location.getPlants().setQuantity(location.getPlants().getQuantity() - 100);
-            System.out.println("Buffalo is plants");
+            logger.logMessage("Buffalo eat is plants");
         }
 
     }
