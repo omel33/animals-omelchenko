@@ -13,12 +13,13 @@ public class SimulationManager {
     private Config config;
     private ScheduledExecutorService scheduler;
     private ExecutorService animalExecutor;
+    private int dayCounter=0;
 
     public SimulationManager(Config config) {
         this.config = config;
         this.island = new Island(config.getIslandWidth(), config.getIslandHeight());
         scheduler = Executors.newScheduledThreadPool(1);
-        animalExecutor = Executors.newFixedThreadPool(10); // Наприклад, 10 потоків для тварин
+        animalExecutor = Executors.newFixedThreadPool(5);
         initializeAnimals();
     }
 
@@ -52,7 +53,8 @@ public class SimulationManager {
     }
 
     public void start() {
-        scheduler.scheduleAtFixedRate(this::runSimulation, 0, config.getSimulationStepDuration(), TimeUnit.MILLISECONDS);
+        scheduler.scheduleAtFixedRate(this::runSimulation, 0,
+                config.getSimulationStepDuration(), TimeUnit.MILLISECONDS);
     }
 
     public void stop() {
@@ -61,10 +63,19 @@ public class SimulationManager {
     }
 
     private void runSimulation() {
+        if (areAllAnimalsDead()) {
+            stop();
+            logger.logMessage("Simulation ended: all animals are dead.");
+            return;
+        }
+
         island.update();
+        dayCounter++;
+
         for (int i = 0; i < island.getWidth(); i++) {
             for (int j = 0; j < island.getHeight(); j++) {
                 Location location = island.getLocation(i, j);
+                location.logLocationDetails(i, j);
                 for (Animal animal : location.getAnimals()) {
                     int finalI = i;
                     int finalJ = j;
@@ -77,6 +88,23 @@ public class SimulationManager {
             }
         }
 
-        logger.logMessage("Simulation step completed.");
+        int remainingAnimals = getTotalAnimalCount();
+        logger.logMessage("Day " + dayCounter + " completed. Remaining animals: " + remainingAnimals);
     }
+
+    private boolean areAllAnimalsDead() {
+        return getTotalAnimalCount() == 0;
+    }
+    private int getTotalAnimalCount() {
+        int total = 0;
+        for (int i = 0; i < island.getWidth(); i++) {
+            for (int j = 0; j < island.getHeight(); j++) {
+                total += island.getLocation(i, j).getAnimals().size();
+            }
+        }
+        return total;
+    }
+
 }
+
+
