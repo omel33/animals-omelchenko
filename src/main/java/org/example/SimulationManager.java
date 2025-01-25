@@ -19,7 +19,7 @@ public class SimulationManager {
         this.config = config;
         this.island = new Island(config.getIslandWidth(), config.getIslandHeight());
         scheduler = Executors.newScheduledThreadPool(1);
-        animalExecutor = Executors.newFixedThreadPool(5);
+        animalExecutor = Executors.newFixedThreadPool(10);
         initializeAnimals();
     }
 

@@ -18,15 +18,15 @@ public class Location {
         this.plants = new Plant(1000);
     }
 
-    public void addAnimal(Animal animal) {
+    public synchronized void addAnimal(Animal animal) {
         animals.add(animal);
     }
 
-    public void removeAnimal(Animal animal) {
+    public synchronized void removeAnimal(Animal animal) {
         animals.remove(animal);
     }
 
-    public List<Animal> getAnimals() {
+    public synchronized List<Animal> getAnimals() {
         return animals;
 
     }
