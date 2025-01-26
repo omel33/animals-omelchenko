@@ -89,7 +89,7 @@ public class SimulationManager {
         }
 
         int remainingAnimals = getTotalAnimalCount();
-        logger.logMessage("Day " + dayCounter + " completed. Remaining animals: " + remainingAnimals);
+        logger.logMessage("DAY " + dayCounter + " COMPLETED. REMAINING ANIMALS: " + remainingAnimals);
     }
 
     private boolean areAllAnimalsDead() {

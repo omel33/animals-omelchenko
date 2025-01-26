@@ -1,7 +1,7 @@
 package org.example;
 
 public class Config {
-    private int islandWidth;
+    public int islandWidth;
     private int islandHeight;
     private int initialWolfCount;
     private int initialFoxCount;
@@ -20,28 +20,75 @@ public class Config {
     private int initialSheepCount;
     private long simulationStepDuration;
 
-    public Config(int islandWidth, int islandHeight, int initialWolfCount, int initialFoxCount,
-                  int initialBearCount, int initialBoaCount, int initialEagleCount, int initialBoarCount,
-                  int initialBuffaloCount, int initialCaterpillarCount, int initialDeerCount,
-                  int initialDuckCount, int initialGoatCount, int initialHorseCount, int initialMouseCount,
-                  int initialRabbitCount, int initialSheepCount, long simulationStepDuration) {
+    public void setIslandWidth(int islandWidth) {
         this.islandWidth = islandWidth;
+    }
+
+    public void setIslandHeight(int islandHeight) {
         this.islandHeight = islandHeight;
+    }
+
+    public void setInitialWolfCount(int initialWolfCount) {
         this.initialWolfCount = initialWolfCount;
+    }
+
+    public void setInitialFoxCount(int initialFoxCount) {
         this.initialFoxCount = initialFoxCount;
+    }
+
+    public void setInitialBearCount(int initialBearCount) {
         this.initialBearCount = initialBearCount;
+    }
+
+    public void setInitialBoaCount(int initialBoaCount) {
         this.initialBoaCount = initialBoaCount;
+    }
+
+    public void setInitialEagleCount(int initialEagleCount) {
         this.initialEagleCount = initialEagleCount;
+    }
+
+    public void setInitialBoarCount(int initialBoarCount) {
         this.initialBoarCount = initialBoarCount;
+    }
+
+    public void setInitialBuffaloCount(int initialBuffaloCount) {
         this.initialBuffaloCount = initialBuffaloCount;
+    }
+
+    public void setInitialCaterpillarCount(int initialCaterpillarCount) {
         this.initialCaterpillarCount = initialCaterpillarCount;
+    }
+
+    public void setInitialDeerCount(int initialDeerCount) {
         this.initialDeerCount = initialDeerCount;
+    }
+
+    public void setInitialDuckCount(int initialDuckCount) {
         this.initialDuckCount = initialDuckCount;
+    }
+
+    public void setInitialGoatCount(int initialGoatCount) {
         this.initialGoatCount = initialGoatCount;
+    }
+
+    public void setInitialHorseCount(int initialHorseCount) {
         this.initialHorseCount = initialHorseCount;
+    }
+
+    public void setInitialMouseCount(int initialMouseCount) {
         this.initialMouseCount = initialMouseCount;
+    }
+
+    public void setInitialRabbitCount(int initialRabbitCount) {
         this.initialRabbitCount = initialRabbitCount;
+    }
+
+    public void setInitialSheepCount(int initialSheepCount) {
         this.initialSheepCount = initialSheepCount;
+    }
+
+    public void setSimulationStepDuration(long simulationStepDuration) {
         this.simulationStepDuration = simulationStepDuration;
     }
 
