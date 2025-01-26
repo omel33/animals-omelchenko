@@ -12,18 +12,7 @@ public abstract class Herbivore extends Animal {
     }
 
 
-    public abstract void eat(Location location);
 
-    @Override
-    public void move() {
-
-    }
-
-
-    @Override
-    public void reproduce() {
-
-    }
 
     protected boolean tryToEat(Animal prey, double probability) {
         return ThreadLocalRandom.current().nextDouble() < probability;

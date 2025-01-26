@@ -2,8 +2,10 @@ package org.example.herbivore;
 
 import location.Island;
 import location.Location;
+import org.example.DefaultAction;
+import org.example.carnivore.Bear;
 
-public class Boar extends Herbivore {
+public class Boar extends Herbivore implements DefaultAction {
     public Boar() {
         super(400, 50, 2, 50);
     }
@@ -16,25 +18,14 @@ public class Boar extends Herbivore {
                 ).findFirst()
                 .ifPresent(animal -> {
                     location.removeAnimal(animal);
-                    System.out.println("Boar is eat mouse");
+                    logger.logMessage("Boar is eat mouse");
                 });
         if(location.getPlants().getQuantity()>0){
             location.getPlants().setQuantity(location.getPlants().getQuantity()-50);
-            System.out.println("Boar is plants");
+            logger.logMessage("Boar eat is plants");
         }
 
     }
 
-    @Override
-    public void move(Island island, int currentX, int currentY) {
-        moveRandomly(island,currentX,currentY);
-        System.out.println("Boar is move");
 
-    }
-
-    @Override
-    public void reproduce() {
-        System.out.println("Boar is reproduce");
-
-    }
 }

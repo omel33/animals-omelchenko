@@ -2,9 +2,10 @@ package org.example.carnivore;
 
 import location.Island;
 import location.Location;
+import org.example.DefaultAction;
 import org.example.herbivore.*;
 
-public class Eagle extends Carnivore{
+public class Eagle extends Carnivore implements DefaultAction {
     public Eagle(){
         super(6,20,3,1);
     }
@@ -18,22 +19,10 @@ public class Eagle extends Carnivore{
                 .findFirst()
                 .ifPresent(animal -> {
                     location.removeAnimal(animal);
-                    System.out.println("Wolf ate a " + animal.getClass()
+                    logger.logMessage("Wolf ate a " + animal.getClass()
                             .getSimpleName().toLowerCase() + ".");
                 });
 
     }
 
-    @Override
-    public void move(Island island, int currentX, int currentY) {
-        moveRandomly(island,currentX,currentY);
-        System.out.println("Eagle is move");
-
-    }
-
-    @Override
-    public void reproduce() {
-        System.out.println("Eagle is reproduce");
-
-    }
 }

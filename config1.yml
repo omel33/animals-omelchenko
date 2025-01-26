@@ -1,0 +1,23 @@
+island:
+  width: 10
+  height: 10
+
+initial:
+  count:
+    Wolf: 50
+    Fox: 25
+    Bear: 20
+    Boa: 50
+    Eagle: 30
+    Boar: 90
+    Buffalo: 20
+    Caterpillar: 1000
+    Deer: 40
+    Duck: 180
+    Goat: 70
+    Horse: 30
+    Mouse: 230
+    Rabbit: 70
+    Sheep: 60
+  duration:
+    simulation-step-ms: 10000

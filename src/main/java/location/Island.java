@@ -21,8 +21,8 @@ public class Island {
     }
 
     public void update() {
-        for (int i=0; i < width; i++) {
-            for (int j=0; j < height; j++) {
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 locations[i][j].update();
             }
         }
@@ -37,7 +37,7 @@ public class Island {
     }
 
     public Location getLocation(int x, int y) {
-        if (x >=0 && x < width && y > 0 && y < height) {
+        if (x >= 0 && x < width && y >= 0 && y < height) {
             return locations[x][y];
         }
         return null;

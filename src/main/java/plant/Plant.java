@@ -1,6 +1,9 @@
 package plant;
 
+import org.example.Logger;
+
 public class Plant {
+    private Logger logger = Logger.getInstance();
     private int quantity;
     public Plant(int initialQuantity){
         this.quantity=initialQuantity;
@@ -13,7 +16,7 @@ public class Plant {
     }
     public void grow(){
         quantity+=15;
-        System.out.println("Plants have grown. Current quantity: "+quantity);
+        logger.logMessage("Plants have grown. Current quantity: "+quantity);
     }
 
 }

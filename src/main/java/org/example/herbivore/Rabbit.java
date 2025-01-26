@@ -2,8 +2,10 @@ package org.example.herbivore;
 
 import location.Island;
 import location.Location;
+import org.example.DefaultAction;
+import org.example.carnivore.Bear;
 
-public class Rabbit extends Herbivore{
+public class Rabbit extends Herbivore implements DefaultAction {
     public Rabbit(){
         super(2,150,2,0.45);
     }
@@ -11,21 +13,10 @@ public class Rabbit extends Herbivore{
     public void eat(Location location) {
         if(location.getPlants().getQuantity()>0){
             location.getPlants().setQuantity(location.getPlants().getQuantity()-1);
-            System.out.println("Rabbit is plants");
+            logger.logMessage("Rabbit eat is plants");
         }
 
     }
 
-    @Override
-    public void move(Island island, int currentX, int currentY) {
-        moveRandomly(island,currentX,currentY);
-        System.out.println("Rabbit is move");
 
-    }
-
-    @Override
-    public void reproduce() {
-        System.out.println("Rabbit is reproduce");
-
-    }
 }
